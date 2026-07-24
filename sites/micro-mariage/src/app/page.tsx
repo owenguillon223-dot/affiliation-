@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
 import { PostCard } from "@/components/PostCard";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
+import { HeroGraphic } from "@/components/HeroGraphic";
 import { SITE_TAGLINE } from "@/lib/seo";
 
 export default function HomePage() {
@@ -9,7 +10,8 @@ export default function HomePage() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-16">
-      <section className="text-center">
+      <section className="relative overflow-hidden text-center">
+        <HeroGraphic />
         <h1 className="text-4xl font-bold tracking-tight text-brand-900 sm:text-5xl">
           {SITE_TAGLINE}
         </h1>
