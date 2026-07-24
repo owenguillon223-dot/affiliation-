@@ -5,6 +5,7 @@ import { getAllSlugs, getPostBySlug } from "@/lib/posts";
 import { articleJsonLd } from "@/lib/seo";
 import { AffiliateDisclosure } from "@/components/AffiliateDisclosure";
 import { ImageSlot } from "@/components/ImageSlot";
+import { CLUSTER_PHOTO } from "@/lib/clusterPhotos";
 
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -33,6 +34,7 @@ export default async function BlogPostPage({
   const { slug } = await params;
   if (!getAllSlugs().includes(slug)) notFound();
   const post = getPostBySlug(slug);
+  const photo = CLUSTER_PHOTO[post.cluster];
 
   return (
     <article className="mx-auto max-w-2xl px-4 py-16">
@@ -60,9 +62,10 @@ export default async function BlogPostPage({
       </p>
       <div className="mt-6">
         <ImageSlot
-          src={`/blog/${post.slug}/cover-image`}
-          alt={post.title}
+          src={photo?.src ?? `/blog/${post.slug}/cover-image`}
+          alt={photo?.alt ?? post.title}
           caption="Photo coming soon"
+          credit={photo?.credit}
           ratio="video"
         />
       </div>

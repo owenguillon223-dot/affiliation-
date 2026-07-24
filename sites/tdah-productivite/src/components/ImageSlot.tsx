@@ -13,12 +13,14 @@ export function ImageSlot({
   src,
   alt,
   caption,
+  credit,
   ratio = "video",
   className = "",
 }: {
   src?: string;
   alt: string;
   caption: string;
+  credit?: string;
   ratio?: Ratio;
   className?: string;
 }) {
@@ -26,6 +28,11 @@ export function ImageSlot({
     return (
       <div className={`relative overflow-hidden rounded-lg ${RATIO_CLASS[ratio]} ${className}`}>
         <Image src={src} alt={alt} fill className="object-cover" />
+        {credit ? (
+          <span className="absolute bottom-1.5 right-2 rounded bg-black/40 px-1.5 py-0.5 text-[10px] leading-none text-white/80">
+            {credit}
+          </span>
+        ) : null}
       </div>
     );
   }
