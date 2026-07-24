@@ -59,7 +59,12 @@ export default async function BlogPostPage({
         {post.publishedAt} · {post.readingTime}
       </p>
       <div className="mt-6">
-        <ImageSlot alt={post.title} caption="Photo coming soon" ratio="video" />
+        <ImageSlot
+          src={`/blog/${post.slug}/cover-image`}
+          alt={post.title}
+          caption="Photo coming soon"
+          ratio="video"
+        />
       </div>
       <div className="mt-6">
         <AffiliateDisclosure />
