@@ -1,8 +1,20 @@
 import type { Metadata } from "next";
+import { Space_Grotesk, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/seo";
+
+const display = Space_Grotesk({
+  subsets: ["latin"],
+  weight: "700",
+  variable: "--font-display",
+});
+const body = IBM_Plex_Sans({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  variable: "--font-body",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -26,8 +38,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="flex min-h-screen flex-col">
+    <html lang="en" className={`${display.variable} ${body.variable}`}>
+      <body className="flex min-h-screen flex-col font-body">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

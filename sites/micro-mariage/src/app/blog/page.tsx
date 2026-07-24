@@ -21,7 +21,7 @@ export default async function BlogIndexPage({
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-16">
-      <h1 className="text-3xl font-bold text-brand-900">All guides</h1>
+      <h1 className="font-display text-3xl font-bold italic text-brand-900">All guides</h1>
       <div className="mt-8 grid gap-4 sm:grid-cols-2">
         {posts.map((post) => (
           <PostCard key={post.slug} post={post} />

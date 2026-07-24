@@ -15,6 +15,10 @@ const config: Config = {
           900: "#2e1c5c",
         },
       },
+      fontFamily: {
+        display: ["var(--font-display)", "sans-serif"],
+        body: ["var(--font-body)", "sans-serif"],
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],

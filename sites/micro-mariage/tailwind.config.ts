@@ -15,6 +15,10 @@ const config: Config = {
           900: "#3f2620",
         },
       },
+      fontFamily: {
+        display: ["var(--font-display)", "serif"],
+        body: ["var(--font-body)", "sans-serif"],
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],

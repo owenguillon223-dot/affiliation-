@@ -5,6 +5,7 @@ import { getAllSlugs, getPostBySlug } from "@/lib/posts";
 import { articleJsonLd } from "@/lib/seo";
 import { AffiliateDisclosure } from "@/components/AffiliateDisclosure";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
+import { ImageSlot } from "@/components/ImageSlot";
 
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -54,10 +55,13 @@ export default async function BlogPostPage({
       <p className="text-xs font-semibold uppercase tracking-wide text-brand-500">
         {post.cluster}
       </p>
-      <h1 className="mt-1 text-3xl font-bold text-brand-900">{post.title}</h1>
+      <h1 className="mt-1 font-display text-3xl font-bold italic text-brand-900">{post.title}</h1>
       <p className="mt-2 text-sm text-brand-500">
         {post.publishedAt} · {post.readingTime}
       </p>
+      <div className="mt-6">
+        <ImageSlot alt={post.title} caption="Photo coming soon" ratio="video" />
+      </div>
       <div className="mt-6">
         <AffiliateDisclosure />
       </div>

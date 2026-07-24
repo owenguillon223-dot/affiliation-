@@ -3,6 +3,7 @@ import { getAllPosts } from "@/lib/posts";
 import { PostCard } from "@/components/PostCard";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { HeroGraphic } from "@/components/HeroGraphic";
+import { SocialProof } from "@/components/SocialProof";
 import { SITE_TAGLINE } from "@/lib/seo";
 
 export default function HomePage() {
@@ -12,7 +13,7 @@ export default function HomePage() {
     <div className="mx-auto max-w-4xl px-4 py-16">
       <section className="relative overflow-hidden text-center">
         <HeroGraphic />
-        <h1 className="text-4xl font-bold tracking-tight text-brand-900 sm:text-5xl">
+        <h1 className="font-display text-4xl font-bold italic tracking-tight text-brand-900 sm:text-5xl">
           {SITE_TAGLINE}
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-brand-700">
@@ -32,7 +33,7 @@ export default function HomePage() {
       </section>
 
       <section className="mt-20">
-        <h2 className="text-2xl font-semibold text-brand-900">
+        <h2 className="font-display text-2xl font-semibold italic text-brand-900">
           Latest guides
         </h2>
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -41,6 +42,8 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      <SocialProof />
     </div>
   );
 }
