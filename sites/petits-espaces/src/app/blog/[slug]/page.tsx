@@ -5,6 +5,7 @@ import { getAllSlugs, getPostBySlug } from "@/lib/posts";
 import { articleJsonLd } from "@/lib/seo";
 import { AffiliateDisclosure } from "@/components/AffiliateDisclosure";
 import { ImageSlot } from "@/components/ImageSlot";
+import { AdSlot } from "@/components/AdSlot";
 import { CLUSTER_PHOTO } from "@/lib/clusterPhotos";
 
 export function generateStaticParams() {
@@ -72,9 +73,11 @@ export default async function BlogPostPage({
       <div className="mt-6">
         <AffiliateDisclosure />
       </div>
+      <AdSlot position="article-top" className="mt-6" />
       <div className="prose prose-brand mt-8 max-w-none">
         <MDXRemote source={post.content} />
       </div>
+      <AdSlot position="article-bottom" className="mt-8" />
     </article>
   );
 }

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Space_Grotesk, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { AdSlot } from "@/components/AdSlot";
 import { SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/seo";
 
 const display = Space_Grotesk({
@@ -40,9 +42,21 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body className="flex min-h-screen flex-col font-body">
+        {process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID && (
+          <Script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID}`}
+            crossOrigin="anonymous"
+            strategy="afterInteractive"
+          />
+        )}
         <Header />
+        <div className="mx-auto w-full max-w-4xl px-4">
+          <AdSlot position="top" className="my-4" />
+        </div>
         <main className="flex-1">{children}</main>
         <Footer />
+        <AdSlot position="sticky-mobile" />
       </body>
     </html>
   );
