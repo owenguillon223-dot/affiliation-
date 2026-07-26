@@ -2,6 +2,12 @@
 
 import { useEffect } from "react";
 
+declare global {
+  interface Window {
+    adsbygoogle?: unknown[];
+  }
+}
+
 const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
 
 type Position = "top" | "article-top" | "article-bottom" | "sticky-mobile";
@@ -21,7 +27,6 @@ export function AdSlot({ position, className = "" }: { position: Position; class
   useEffect(() => {
     if (!active) return;
     try {
-      // @ts-expect-error adsbygoogle is injected by the AdSense loader script
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     } catch {
       // Loader script not ready yet — safe to ignore, nothing to render without it.

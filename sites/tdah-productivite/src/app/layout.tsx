@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Space_Grotesk, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
@@ -42,6 +43,15 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body className="flex min-h-screen flex-col font-body">
+        {/* Ezoic — must load before any other script */}
+        <Script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js" strategy="beforeInteractive" />
+        <Script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js" strategy="beforeInteractive" />
+        <Script async src="//www.ezojs.com/ezoic/sa.min.js" strategy="beforeInteractive" />
+        <Script id="ezstandalone-init" strategy="beforeInteractive">
+          {`window.ezstandalone = window.ezstandalone || {};
+ezstandalone.cmd = ezstandalone.cmd || [];`}
+        </Script>
+        <Script src="//ezoicanalytics.com/analytics.js" strategy="beforeInteractive" />
         {process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID && (
           <Script
             async
@@ -57,6 +67,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <AdSlot position="sticky-mobile" />
+        <GoogleAnalytics gaId="G-35Q8DPPZ5T" />
       </body>
     </html>
   );

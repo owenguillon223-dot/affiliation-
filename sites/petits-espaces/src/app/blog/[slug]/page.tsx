@@ -6,6 +6,7 @@ import { articleJsonLd } from "@/lib/seo";
 import { AffiliateDisclosure } from "@/components/AffiliateDisclosure";
 import { ImageSlot } from "@/components/ImageSlot";
 import { AdSlot } from "@/components/AdSlot";
+import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { CLUSTER_PHOTO } from "@/lib/clusterPhotos";
 
 export function generateStaticParams() {
@@ -78,6 +79,7 @@ export default async function BlogPostPage({
         <MDXRemote source={post.content} />
       </div>
       <AdSlot position="article-bottom" className="mt-8" />
+      <NewsletterSignup />
     </article>
   );
 }
